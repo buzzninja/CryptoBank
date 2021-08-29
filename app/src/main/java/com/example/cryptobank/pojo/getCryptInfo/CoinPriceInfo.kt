@@ -1,10 +1,9 @@
 package com.example.cryptobank.pojo.getCryptInfo
 
-import androidx.annotation.Nullable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.cryptobank.api.ApiFactory.BASE_IMAGE_URL
-import com.example.cryptobank.utils.convertTimetampToTIme
+import com.example.cryptobank.utils.convertTimestampToTime
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
@@ -151,7 +150,7 @@ data class CoinPriceInfo(
 
 ) {
     fun getFormattedUpdateTime(): String {
-        return convertTimetampToTIme(lastUpdate)
+        return convertTimestampToTime(lastUpdate)
     }
 
     fun getFullTimageUrl():String{

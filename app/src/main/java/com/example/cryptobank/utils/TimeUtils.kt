@@ -1,15 +1,14 @@
 package com.example.cryptobank.utils
 
-import java.sql.Timestamp
+
 import java.text.SimpleDateFormat
 import java.util.*
 
-fun convertTimetampToTIme(time:Int?):String{
-    if (time==null) return ""
-    val stamp = Timestamp(((time+33+(60*39))*1000).toLong())
-    val date = Date(stamp.time)
-    val pattern = "HH:mm:ss"
-    val sdf=SimpleDateFormat(pattern,Locale.getDefault())
-    sdf.timeZone = TimeZone.getDefault()
-    return sdf.format(date)
+fun convertTimestampToTime(time: Int?): String {
+    if (time == null) return ""
+    val localeDate = Date(time.toLong()*1000)
+    val sdf = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+    sdf.timeZone = Calendar.getInstance().timeZone
+    val date = sdf.format(localeDate)
+    return date
 }
