@@ -2,4 +2,13 @@
     <string name="app_name">CryptoBank</string>
     <string name="symbols_teamplate">%s / %s</string>
     <string name="update_time_teamplate">"Время последнего обновления: %s"</string>
+    <string name="Detailed_price">Цена:</string>
+    <string name="Detailed_nim_day">Минимум за день:</string>
+    <string name="Detailed_max_day">Максимум за день:</string>
+    <string name="Detailed_last_trade">Последняя сделка:</string>
+    <string name="Detailed_updated">Обновлено:</string>
+    <string name="Detailed_slash">/</string>
+    <string name="Detailed_fSymb">Fsymb</string>
+    <string name="Detailed_tSymb">Tsymb</string>
+    <string name="icon_description">иконка криптовалюты</string>
 </resources>

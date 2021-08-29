@@ -36,7 +36,7 @@ class CoinInfoAdapter(private val context: Context) : RecyclerView.Adapter<CoinI
             val updateTime = context.resources.getString(R.string.update_time_teamplate)
             tvSymbols.text = String.format(symbolsTeamplate, coin.fromSymbol,coin.toSymbol)
             tvPrice.text = coin.price.toString()
-            tvUpdateTime.text = String.format(updateTime,coin.getFormattedTime())
+            tvUpdateTime.text = String.format(updateTime,coin.getFormattedUpdateTime())
             Picasso.get().load(coin.getFullTimageUrl()).into(ivLogoCoin)
             itemView.setOnClickListener {
                 onCoinClickListener?.onCoinClick(coin)

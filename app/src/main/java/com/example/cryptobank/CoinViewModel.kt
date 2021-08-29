@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 
 class CoinViewModel(application: Application) : AndroidViewModel(application) {
 
-    init{
+    init {
         loadData()
     }
 
@@ -29,19 +29,17 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun loadData() {
-        val disposable = ApiFactory.apiService.getTopCoinsInfo(limit = 20)
+        val disposable = ApiFactory.apiService.getTopCoinsInfo(limit = 50)
             .map { it.data?.map { it.coinInfo?.name }?.joinToString(",") as String }
             .flatMap { ApiFactory.apiService.getFullPriceList(fSyms = it) }
             .map { getPriceListFromRawData(it) }
-            .delaySubscription(10,TimeUnit.SECONDS)//Задержка
+            .delaySubscription(10, TimeUnit.SECONDS)//Задержка
             .repeat()//Повторяет загрузку, пока она не станет невозможна. После не возобновляется
             .retry()//Выполнит попытку загрузки после неудачи
             .subscribeOn(Schedulers.io())
             .subscribe(/*успешная загрузка*/{
                 db.coinPriceInfoDao().insertPriceList(it)
-                Log.d("TESTLOADING", "Success $it", null)
             },/*неуспешная загрузка*/{
-                Log.d("TESTNOTLOADING", "Fail ${it.message.toString()}")
             })
 
     }

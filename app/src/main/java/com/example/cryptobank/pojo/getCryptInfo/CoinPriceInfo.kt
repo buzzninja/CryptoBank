@@ -150,7 +150,7 @@ data class CoinPriceInfo(
 //Double totaltoptiervolume24hto;
 
 ) {
-    fun getFormattedTime(): String {
+    fun getFormattedUpdateTime(): String {
         return convertTimetampToTIme(lastUpdate)
     }
 

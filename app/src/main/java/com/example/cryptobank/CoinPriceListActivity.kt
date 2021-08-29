@@ -1,9 +1,6 @@
 package com.example.cryptobank
 
-
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.*
 import com.example.cryptobank.adapters.CoinInfoAdapter
@@ -29,9 +26,13 @@ class CoinPriceListActivity : AppCompatActivity() {
             adapter.coinInfoList = it
         })
 
-        adapter.onCoinClickListener = object : CoinInfoAdapter.OnCoinClickListener{
+        adapter.onCoinClickListener = object : CoinInfoAdapter.OnCoinClickListener {
             override fun onCoinClick(coinPriceInfo: CoinPriceInfo) {
-                Toast.makeText(this@CoinPriceListActivity,coinPriceInfo.fromSymbol,Toast.LENGTH_SHORT).show()
+                val intent = CoinDetailActivity.newIntent(
+                    this@CoinPriceListActivity,
+                    coinPriceInfo.fromSymbol
+                )
+                startActivity(intent)
             }
         }
 
