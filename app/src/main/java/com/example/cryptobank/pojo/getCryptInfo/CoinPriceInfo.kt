@@ -3,11 +3,15 @@ package com.example.cryptobank.pojo.getCryptInfo
 import androidx.annotation.Nullable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.cryptobank.api.ApiFactory.BASE_IMAGE_URL
+import com.example.cryptobank.utils.convertTimetampToTIme
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "full_price_list")
 data class CoinPriceInfo(
+
+
     @SerializedName("TYPE")
     @Expose
     val type: String?,
@@ -145,4 +149,12 @@ data class CoinPriceInfo(
 //@Expose
 //Double totaltoptiervolume24hto;
 
-)
+) {
+    fun getFormattedTime(): String {
+        return convertTimetampToTIme(lastUpdate)
+    }
+
+    fun getFullTimageUrl():String{
+        return BASE_IMAGE_URL+imageUrl
+    }
+}
