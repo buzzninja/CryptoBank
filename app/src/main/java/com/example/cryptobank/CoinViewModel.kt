@@ -9,7 +9,7 @@ import com.example.cryptobank.database.AppDatabase
 import com.example.cryptobank.pojo.getCryptInfo.CoinPriceInfo
 import com.example.cryptobank.pojo.getCryptInfo.CoinPriceInfoRawData
 import com.google.gson.Gson
-import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
@@ -41,7 +41,7 @@ class CoinViewModel(application: Application) : AndroidViewModel(application) {
                 db.coinPriceInfoDao().insertPriceList(it)
             },/*неуспешная загрузка*/{
             })
-
+            compositeDisposable.add(disposable)
     }
 
     private fun getPriceListFromRawData(coinPriceInfoRawData: CoinPriceInfoRawData)
